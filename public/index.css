@@ -166,6 +166,12 @@ body {
 .todo-list li.editing {
 	border-bottom: none;
 	padding: 0;
+	display: flex;
+}
+.todo-list li.editing button {
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 10px;
 }
 
 .todo-list li.editing .edit {

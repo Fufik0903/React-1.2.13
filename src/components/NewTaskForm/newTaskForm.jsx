@@ -2,19 +2,17 @@ import React, {Component} from 'react';
 
 export default class NewTaskForm extends Component {
     render() {
-        const {text, time, id} = this.props;
+        let newItem = React.createRef();
+        const {tasks, id, addTask} = this.props;
+        let onAddItem = () => {
+            let text = newItem.current.value;
+            this.props.addTask(text);
+            newItem.current.value = '';
+        }
         return (
             <li className="editing" key={id}>
-                <div className="view">
-                    <input className="toggle" type="checkbox"/>
-                    <label>
-                        <span className="description">{text}</span>
-                        <span className="created">{time}</span>
-                    </label>
-                    <button className="icon icon-edit"></button>
-                    <button className="icon icon-destroy"></button>
-                </div>
-                <input type="text" className="edit" value="Editing task"/>
+                <input type="text" className="edit" ref={newItem} placeholder='Editing task'/>
+                <button onClick={onAddItem}>Add item</button>
             </li>
         );
     }
